@@ -1,0 +1,22 @@
+.profile__plus {
+  margin: 35px 0 35px auto;
+  align-self: center;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  width: 150px;
+  height: 50px;
+  background-color: #000000;
+  background-image: url(../../../images/Vector2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity 0.3s, transform 0.2s linear;
+}
+.profile__plus:hover {
+  opacity: 0.5;
+}
+@media screen and (max-width: 630px) {
+  .profile__plus {
+    width: 100%;
+  }
+}
