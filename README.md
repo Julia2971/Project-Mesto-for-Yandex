@@ -14,6 +14,6 @@
 5. Adaptive
 ***
 
-#GitHub Pages
+# GitHub Pages
 
 https://julia2971.github.io/Project-Mesto-for-Yandex/
