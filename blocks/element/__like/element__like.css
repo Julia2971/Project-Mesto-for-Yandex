@@ -1,4 +1,4 @@
-.element__like{
+.element__like {
   background-image: url(../../../images/element__like.svg);
   background-repeat: no-repeat;
   transition: opacity 0.3s, transform 0.2s linear;
@@ -8,8 +8,5 @@
   background-color: #ffffff;
 }
 .element__like:hover {
-opacity: 0.5;
-}
-.element__like:active{
-  background-image: url(../../../images/Union.svg);
+  opacity: 0.5;
 }

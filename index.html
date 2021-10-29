@@ -10,73 +10,67 @@
     <div class="page">
       <header class="header">
         <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto" />
-        <div class="header__line"></div>
       </header>
       <main class="content">
         <section class="profile">
-          <img class="profile__image" src="images/image.jpg">
+          <img class="profile__image" src="images/image.jpg" alt="Фото для профиля">
           <div class="profile__info">
-            <div class="profile__text-container">
               <div class="profile__title-container">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button class="profile__edit"></button>
+                <button type="button" class="profile__edit"></button>
               </div>
               <p class="profile__subtitle">Исследователь океана</p>
-            </div>
           </div>
-          <button class="profile__plus" ></button>
+          <button type="button" class="profile__plus" ></button>
         </section>
         <section class="elements">
-            <div class="element">
-              <img class="element__image" src="./images/1.jpg" />
+            <article class="element">
+              <img class="element__image" src="./images/1.jpg" alt="Карачаевск"/>
               <div class="element__footer">
                 <h2 class="element__title">Карачаевск</h2>
-                <button class="element__like"></button>
+                <button type="button" class="element__like element__like_active"></button>
               </div>
-            </div>
-            <div class="element">
-              <img class="element__image" src="./images/2.png" />
+            </article>
+            <article class="element">
+              <img class="element__image" src="./images/2.png" alt="Гора Эльбрус"/>
               <div class="element__footer">
                 <h2 class="element__title">Гора Эльбрус</h2>
-                <button class="element__like"></button>
+                <button type="button" class="element__like element__like_active"></button>
               </div>
-            </div>
-            <div class="element">
-              <img class="element__image" src="./images/3.png" />
+            </article>
+            <article class="element">
+              <img class="element__image" src="./images/3.png" alt="Домбай"/>
               <div class="element__footer">
                 <h2 class="element__title">Домбай</h2>
-                <button class="element__like"></button>
+                <button type="button" class="element__like element__like_active"></button>
               </div>
-            </div>
-            <div class="element">
-              <img class="element__image" src="./images/2.png" />
+            </article>
+            <article class="element">
+              <img class="element__image" src="./images/2.png" alt="Гора Эльбрус"/>
               <div class="element__footer">
                 <h2 class="element__title">Гора Эльбрус</h2>
-                <button class="element__like"></button>
+                <button type="button" class="element__like element__like_active"></button>
               </div>
-            </div>
-            <div class="element">
-              <img class="element__image" src="./images/3.png" />
+            </article>
+            <article class="element">
+              <img class="element__image" src="./images/3.png" alt="Домбай"/>
               <div class="element__footer">
                 <h2 class="element__title">Домбай</h2>
-                <button class="element__like"></button>
+                <button type="button" class="element__like element__like_active"></button>
               </div>
-            </div>
-            <div class="element">
-              <img class="element__image" src="./images/1.jpg" />
+            </article>
+            <article class="element">
+              <img class="element__image" src="./images/1.jpg" alt="Карачаево"/>
               <div class="element__footer">
                 <h2 class="element__title">Карачаево</h2>
-                <button class="element__like"></button>
+                <button type="button" class="element__like element__like_activ"></button>
               </div>
-            </div>
+            </article>
         </section>
-        <footer class="footer">
-          <img class="footer__copyright" src="images/© 2020 Mesto Russia.png">
-        </footer>
-       <div class="popup popup__opened">
+       <div class="popup popup_opened">
           <div  class="popup__container">
-            <button class="popup__close"></button>
-            <form class="popup__form">
+            <button type="button" class="popup__close"></button>
+            <form class="popup__form" name="profile">
               <h2 class="popup__title">Редактировать профиль</h2>
               <fieldset class="popup__input-container">
                 <input value="Жак-Ив Кусто" type="text" class="popup__input">
@@ -87,6 +81,9 @@
           </div>
         </div>
       </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2020 Mesto Russia</p>
+      </footer>
     </div>
   </body>
 </html>
