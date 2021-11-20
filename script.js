@@ -73,6 +73,11 @@ function handleCardLikeClick(event) {
   event.target.classList.toggle('card__like_active');
 }
 
+// Функция для удлаения карточек, слушатель так же будет при создании карточки
+function handleCardRemoveClick(event) {
+  event.target.closest(".card").remove();
+}
+
 
 // Функция создания карточки.
 function createCard(title, link) {
@@ -83,7 +88,8 @@ function createCard(title, link) {
   imageElement.src = link
   imageElement.alt = title
   titleElement.textContent = title
-  cardElement.querySelector('.card__like').addEventListener('click', handleCardLikeClick)
+  cardElement.querySelector('.card__like').addEventListener('click', handleCardLikeClick);
+  cardElement.querySelector('.card__trash').addEventListener('click', handleCardRemoveClick)
   return cardElement
 }
 
@@ -96,4 +102,14 @@ initialCards.forEach((item) => {
   cardList.prepend(createCard(item.name, item.link))
 }) 
 
+
+
+
+// функция самбита для попапа профиля
+function formSubmitHandlerProfile(evt) {
+  evt.preventDefault();
+  profileNameElement.textContent = nameInput.value;
+  profileAboutElement.textContent = jobInput.value;
+  removePopupVisibility(popupElementProfile);
+}
 
