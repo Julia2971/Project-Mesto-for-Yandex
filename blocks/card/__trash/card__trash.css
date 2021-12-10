@@ -8,4 +8,9 @@
     right: 20px;
     border: none;
     background-color: transparent;
+    transition: opacity 0.3s, transform 0.2s linear;
 }
+
+.card__trash:hover {
+    opacity: 0.5;
+  }
