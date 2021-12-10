@@ -12,6 +12,7 @@
 3. Grid.
 4. Flex.
 5. Adaptive
+6. Javasript 
 ***
 
 # GitHub Pages
