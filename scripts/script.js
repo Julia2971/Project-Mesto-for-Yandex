@@ -54,10 +54,14 @@ function openPopup(popup) {
 }
 // слушатель для открытия Редактирования профиля
 profileEdit.addEventListener('click', function () {
+  inputName.value = profileName.textContent
+  inputJob.value = profileJob.textContent
   openPopup(profilePopup)
 });
 // слушатель для открытия новой карточки 
 popupPlus.addEventListener('click', function() {
+  cardTitle.value = '';
+  cardLink.value = '';
   openPopup(cardPopup)
 });
 
@@ -79,12 +83,12 @@ popupCloseImage.addEventListener ('click', function() {
   closePopup(popupImage)
 });
 // Функция для лайков, слушатель вызовем при создании карточки
-function CardLikeClick(event) {
+function clickLikeCard(event) {
   event.target.classList.toggle('card__like_active');
 }
 
 // Функция для удлаения карточек, слушатель так же будет при создании карточки
-function CardRemoveClick(event) {
+function clickRemoveCard(event) {
   event.target.closest(".card").remove();
 }
 
@@ -98,8 +102,8 @@ function createCard(item) {
   imageElement.src = item.link;
   imageElement.alt = item.name;
   titleElement.textContent = item.name;
-  cardElement.querySelector('.card__like').addEventListener('click', CardLikeClick);
-  cardElement.querySelector('.card__trash').addEventListener('click', CardRemoveClick);
+  cardElement.querySelector('.card__like').addEventListener('click', clickLikeCard);
+  cardElement.querySelector('.card__trash').addEventListener('click', clickRemoveCard);
   imageElement.addEventListener('click', () => {     // попап с фоткой
     popupPicture.src = item.link;
     popupPicture.alt = item.name;
@@ -115,7 +119,7 @@ function renderCard (item) {
 }
 
 initialCards.forEach((item) => {     // перебор массива
-  cardList.prepend(createCard(item))
+  renderCard(createCard(item))
 }) 
 
 
