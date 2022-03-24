@@ -3,19 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="root">
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto" />
+        <img class="header__logo" alt="Логотип Mesto" />
       </header>
       <main class="content">
         <section class="profile">
           <img
             class="profile__image"
-            src="images/image.jpg"
             alt="Фото для профиля"
           />
           <div class="profile__info">
@@ -49,19 +47,32 @@
               type="button"
               class="popup__close popup__close_edit"
             ></button>
-            <form class="popup__form popup__form_profile" name="profile">
+            <form class="popup__form popup__form_profile" name="profile" novalidate>
               <h2 class="popup__title">Редактировать профиль</h2>
               <fieldset class="popup__input-container">
-                <input
+                <input 
+                  placeholder="Имя"
+                  id="name"
                   value="Жак-Ив Кусто"
                   type="text"
+                  minlength="2"
+                  maxlength="40"
                   class="popup__input popup__input_type_name"
+                  required
+
                 />
+                <span class="popup__input_error_visible name-error"> </span>
                 <input
+                  placeholder="О себе"
+                  id="description"
                   value="Исследователь океана"
                   type="text"
+                  minlength="2"
+                  maxlength="200"
                   class="popup__input popup__input_type_description"
+                  required
                 />
+                <span class="popup__input_error_visible description-error"> </span>
               </fieldset>
               <button class="popup__submit" type="submit">Сохранить</button>
             </form>
@@ -73,19 +84,27 @@
               type="button"
               class="popup__close popup__close_new-place"
             ></button>
-            <form class="popup__form" name="profile">
+            <form class="popup__form" name="profile" novalidate>
               <h2 class="popup__title">Новое место</h2>
               <fieldset class="popup__input-container">
                 <input
-                  value="Название"
+                  placeholder="Название"
+                  id="place"
                   type="text"
+                  minlength="2"
+                  maxlength="30"
                   class="popup__input popup__input_type_title"
+                  required
                 />
+                <span class="popup__input_error_visible place-error"> </span>
                 <input
-                  value="Ссылка на картинку"
-                  type="text"
+                  placeholder="Ссылка на картинку"
+                  id="link"
+                  type="url"
                   class="popup__input popup__input_type_link"
+                  required
                 />
+                <span class="popup__input_error_visible link-error"> </span>
               </fieldset>
               <button class="popup__submit" type="submit">Создать</button>
             </form>
@@ -103,6 +122,5 @@
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
     </div>
-    <script src="./scripts/script.js"></script>
   </body>
 </html>
