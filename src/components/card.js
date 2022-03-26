@@ -1,5 +1,5 @@
 import { popupPicture,popupFigcaption,popupImage,cardList, initialCards} from './constans.js'
-import {openPopup} from './utils.js'
+import {openPopup} from './modal.js'
 
 
 // Функция для лайков, слушатель вызовем при создании карточки
