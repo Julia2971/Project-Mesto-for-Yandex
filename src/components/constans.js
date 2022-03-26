@@ -1,4 +1,3 @@
-export const popup = document.querySelector('.popup');
 export const popups = Array.from(document.querySelectorAll('.popup'));
 export const profilePopup = document.querySelector ('.popup_profile-edit')
 export const cardPopup = document.querySelector(".popup_new-place");
@@ -6,6 +5,7 @@ export const popupImage = document.querySelector(".popup_image");
 export const popupPicture = document.querySelector('.popup__picture');
 export const popupFigcaption = document.querySelector('.popup__figcaption');
 export const popupCloseProfile = profilePopup.querySelector('.popup__close')
+export const popupSubmit = document.querySelector('.popup__submit_reset');
 export const popupClosePlace = cardPopup.querySelector('.popup__close');
 export const popupCloseImage = popupImage.querySelector('.popup__close')
 export const popupPlus = document.querySelector ('.profile__plus');
@@ -20,6 +20,7 @@ export const cardList = document.querySelector('.cards')
 export const cardTitle = document.querySelector ('.popup__input_type_title');
 export const cardLink = document.querySelector ('.popup__input_type_link')
 export const cardTemplate = document.querySelector('#card-template').content.querySelector('.card')
+export const ESC_CODE = 'Escape';
 export const validationObject = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',

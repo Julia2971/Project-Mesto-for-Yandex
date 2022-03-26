@@ -1,20 +1,32 @@
-import { profileName, profileJob, inputName, inputJob, profilePopup, cardTitle, cardLink, cardList, cardPopup } from "./constans.js";
-import { closePopup } from "./utils.js";
-import { createCard } from "./card.js";
-// функция сабмита для попапа профиля
-export function formSubmitHandlerProfile(evt) {
-    evt.preventDefault();
-    profileName.textContent = inputName.value;
-    profileJob.textContent = inputJob.value;
-    closePopup(profilePopup)
-  }
-  
-  // функция сабмита для попапа с местом
- export function formSubmitHandlerCard (evt) {
-    evt.preventDefault();
-    const popupNameValue = cardTitle.value;
-    const popupLinkValue = cardLink.value;
-    const addCard = createCard({name: popupNameValue,link:popupLinkValue});
-    cardList.prepend(addCard);
-    closePopup(cardPopup);
+import {ESC_CODE,popups} from './constans'
+
+
+//  функция открытие попапов
+export function openPopup(popup) {
+    popup.classList.add('popup_opened');
+    document.addEventListener('keydown',  closeByEsc)
   };
+//  функция для закрытие попапов
+export function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown',  closeByEsc)
+};
+
+
+export function closeByEsc(evt) {
+  if (evt.key === ESC_CODE) {
+    const popupActive = document.querySelector('.popup_opened');
+    closePopup(popupActive); 
+  }
+} 
+
+popups.forEach(function(popup) {
+  popup.addEventListener("mousedown", function(evt) {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__button-close')) {
+      closePopup(popup);
+    }
+  })
+})

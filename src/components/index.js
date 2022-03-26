@@ -1,10 +1,8 @@
 import '../pages/index.css'
-import {openPopup, closePopup} from './utils.js';
-import {popup, popups, profileEdit, popupPlus, popupCloseProfile, profilePopup, cardPopup, popupClosePlace, inputName, profileName, inputJob, profileJob, cardTitle,cardLink,initialCards,popupCloseImage,popupImage,formElementProfile, popupNewPlace, validationObject} from './constans.js';
+import {openPopup, closePopup} from './modal.js';
+import {popups, profileEdit, popupPlus, popupSubmit, popupCloseProfile, profilePopup, cardPopup, popupClosePlace, inputName, profileName, inputJob, profileJob, cardTitle, cardList, cardLink,initialCards,popupCloseImage,popupImage,formElementProfile, popupNewPlace, validationObject} from './constans.js';
 import {renderCard, createCard} from './card.js';
-import {formSubmitHandlerCard, formSubmitHandlerProfile} from  './modal.js';
-
-// import {enableValidation} from './validate.js';
+import {enableFormValidation} from './validate.js';
 
 // слушатель для открытия Редактирования профиля
 profileEdit.addEventListener('click', function () {
@@ -16,7 +14,8 @@ profileEdit.addEventListener('click', function () {
 popupPlus.addEventListener('click', function() {
   cardTitle.value = '';
   cardLink.value = '';
-  openPopup(cardPopup)
+  openPopup(cardPopup);
+
 });
 
 
@@ -44,12 +43,24 @@ formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
 
 popupNewPlace.addEventListener('submit', formSubmitHandlerCard);
 
-document.addEventListener("keydown", function(evt) {
-  const popupActive = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(popupActive);
-  }
-});
+function formSubmitHandlerProfile(evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileJob.textContent = inputJob.value;
+  closePopup(profilePopup)
+}
+
+// функция сабмита для попапа с местом
+function formSubmitHandlerCard (evt) {
+  evt.preventDefault();
+  const popupNameValue = cardTitle.value;
+  const popupLinkValue = cardLink.value;
+  const addCard = createCard({name: popupNameValue,link:popupLinkValue});
+  cardList.prepend(addCard);
+  closePopup(cardPopup);
+  popupSubmit.classList.add('popup__submit_disabled');
+  popupSubmit.setAttribute('disabled', true)
+};
 
 
 popups.forEach(function(popup) {
@@ -65,70 +76,5 @@ popups.forEach(function(popup) {
 
 
 
-
-function showError (formElement, inputElement, errorMessage, validationObject) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(validationObject.inputErrorClass);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add(validationObject.errorClass);
-}
-
-// Скрыть ошибку
-
-function hideError (formElement, inputElement, validationObject) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(validationObject.inputErrorClass);
-  errorElement.classList.remove(validationObject.errorClass);
-  errorElement.textContent = "";
-}
-
-// Проверка формы на корректность
-// введенных данных
-
-function checkInputValidity (formElement, inputElement, validationObject) {
-  if (!inputElement.validity.valid) {
-    showError(formElement, inputElement, inputElement.validationMessage, validationObject)
-  } else {
-    hideError(formElement, inputElement, validationObject);
-  }
-}
-
-function setEventListener (formElement, validationObject) {
-  const inputList = Array.from(formElement.querySelectorAll(validationObject.inputSelector));
-  const buttonElement = formElement.querySelector(validationObject.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, validationObject);
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, validationObject);
-      toggleButtonState(inputList, buttonElement, validationObject);
-    });
-  })
-}
-
-function enableFormValidation (validationObject) {
-  const formList = Array.from(document.querySelectorAll(validationObject.formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-    setEventListener(formElement, validationObject);
-  });
-}
-
-function hasInvalidInput (inputList) {
-  return inputList.some((inputElement) => {
-    return (!inputElement.validity.valid);
-  })
-}
-
-function toggleButtonState (inputList, buttonElement, validationObject) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(validationObject.inactiveButtonClass);
-    buttonElement.disabled = true;
-  } else {
-    buttonElement.classList.remove(validationObject.inactiveButtonClass);
-    buttonElement.disabled = false;
-  }
-}
 
 enableFormValidation(validationObject)
